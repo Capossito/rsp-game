@@ -22,19 +22,33 @@
 	<section id="body-section">
 		<div class="body-section-wrapper">
 			<div class="main-content">
-				<!-- time markup start
-				<div class="time-select">
-					<h4>Playing Time</h4>
-					<div class="form-wrapper">
-						<form action="" id="play-time-form">
-							<div><label for="">Min</label><input type="text" name="time-min"></div>
-							<div><label for="">Sec</label><input type="text" name="time-sec"></div>
-						</form>
-					</div>
-					<a href="#" class="btn start-game">Start</a>
-				</div>
-				 time markup end -->
-				 <!-- top -->
+
+			<!-- template screens -->
+
+			<!-- template screens ends -->
+ 
+			</div>
+		</div>	
+	</section>
+
+	<section id="footer-section">
+	</section>
+	
+	<script id="select-time-template" type="text/template">
+		<div class="time-select">
+			<h4>Playing Time</h4>
+			<div class="form-wrapper">
+				<form action="" id="play-time-form">
+					<div><label for="">Min</label><input type="text" name="time-min"></div>
+					<div><label for="">Sec</label><input type="text" name="time-sec"></div>
+				</form>
+			</div>
+		<a href="#" class="btn start-game" id="btn-start-game">Start</a>
+		</div>
+	</script>
+
+	<script id="game-screen-template" type="text/template">
+		<!-- top -->
 				 <div class="game-top">
 				 	<div class="timing-btn">
 				 		<div class="timing-label">
@@ -85,13 +99,7 @@
 				 	<a href="#" class="btn scissors-btn">Scissors</a>
 				 </div>
 				 <!-- bottom ends -->
-			</div>
-		</div>	
-	</section>
-
-	<section id="footer-section">
-	</section>
-
+	</script>
 
 
 	<script src="assets/js/jquery.js"></script>
