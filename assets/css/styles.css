@@ -27,7 +27,8 @@ input[type=text] {
   border-radius: 99em;
   text-decoration: none;
   outline: none;
-  text-align: center; }
+  text-align: center;
+  border: none; }
 
 #header-section .header-section-wrapper .title-header {
   width: 100%;
