@@ -13,7 +13,7 @@ html {
   background: #FFD105 url("../images/Bg-Pattern.png");
   background-repeat: repeat; }
 
-input[type=number] {
+input[type=text] {
   width: 3em;
   padding: 0.5em 0.5em;
   border: 0.1em solid #B12C2C;
@@ -64,7 +64,7 @@ input[type=number] {
     left: 0;
     right: 0; }
     #body-section .body-section-wrapper .main-content .time-select h4 {
-      text-align: center; }
+      color: #B12C2C; }
     #body-section .body-section-wrapper .main-content .time-select .form-wrapper {
       margin-bottom: 30px; }
 #body-section #play-time-form div {
@@ -72,9 +72,13 @@ input[type=number] {
   #body-section #play-time-form div input {
     display: block;
     position: relative;
-    top: -1em; }
+    top: -1em;
+    color: #B12C2C;
+    font-size: 20px;
+    text-align: center; }
   #body-section #play-time-form div label {
     display: block;
     position: relative;
     top: 3em;
-    text-align: center; }
+    text-align: center;
+    color: #B12C2C; }
