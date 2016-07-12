@@ -67,6 +67,44 @@ input[type=text] {
       color: #B12C2C; }
     #body-section .body-section-wrapper .main-content .time-select .form-wrapper {
       margin-bottom: 30px; }
+  #body-section .body-section-wrapper .main-content .game-top {
+    width: 100%;
+    height: 150px; }
+    #body-section .body-section-wrapper .main-content .game-top .timing-btn {
+      width: 100px;
+      height: 60px;
+      position: absolute;
+      left: 100px; }
+    #body-section .body-section-wrapper .main-content .game-top .winning-score {
+      width: 100px;
+      height: 60px;
+      position: absolute;
+      right: 200px; }
+    #body-section .body-section-wrapper .main-content .game-top .drawing-score {
+      width: 100px;
+      height: 60px;
+      position: absolute;
+      right: 100px; }
+    #body-section .body-section-wrapper .main-content .game-top .losses-score {
+      width: 100px;
+      height: 60px;
+      position: absolute;
+      right: 0; }
+  #body-section .body-section-wrapper .main-content .game-middle {
+    width: 100%;
+    height: 150px; }
+    #body-section .body-section-wrapper .main-content .game-middle .player-choice {
+      width: 158px;
+      height: 100px;
+      background: url("../images/hands/hands1.png") no-repeat;
+      background-size: cover;
+      float: left; }
+    #body-section .body-section-wrapper .main-content .game-middle .computer-choice {
+      width: 150px;
+      height: 100px;
+      background: url("../images/hands/hands6.png") no-repeat;
+      background-size: cover;
+      float: right; }
 #body-section #play-time-form div {
   display: inline-block; }
   #body-section #play-time-form div input {
