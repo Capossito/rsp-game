@@ -1,0 +1,144 @@
+//variable
+
+$mainColor: #FFD105;
+$contentBoxColor: #FFE574;
+$darkRed: #B12C2C;
+$darkBrown: #836B00;
+
+//my font
+
+@font-face{
+	font-family: "DeLaFuente";
+	src: url("../fonts/DeLaFuente.ttf") format('truetype');
+}
+
+
+//global styling
+
+*{
+	box-sizing: border-box;
+}
+
+html, body{
+	margin: 0;
+	padding: 0;
+	font-family: "DeLaFuente";
+}
+
+html{
+	background: $mainColor url("../images/Bg-Pattern.png");
+	background-repeat: repeat;
+}
+
+input[type=number] {
+	width: 3em;
+	padding: 0.5em 0.5em;
+	border: 0.1em solid $darkRed;
+	border-radius: 0.5em;
+	background-color: $contentBoxColor;
+}
+
+.btn {
+	background-color: $mainColor;
+	color: $darkRed;
+	padding: 5px 30px;
+	border-radius: 99em;
+	text-decoration: none;
+	outline: none;
+	text-align: center;
+}
+
+//header section styles
+
+#header-section{
+	.header-section-wrapper{
+		//position: relative;
+	
+		.title-header{
+			width: 100%;
+			//position: absolute;
+			margin: auto;
+			left: 0;
+			right: 0;
+
+			h1 {
+				text-align: center;
+				color: $darkRed;
+
+			}
+			
+		}
+		.subtitle-header{
+			width: 100%;
+			//position: absolute;
+			margin: auto;
+			left: 0;
+			right: 0;
+
+			h4{
+				text-align: center;
+				color: $darkRed;
+
+			}
+
+		}
+	}
+}
+
+
+//body section styles
+
+#body-section{
+
+	.body-section-wrapper{
+
+		.main-content{
+			width: 50%;
+			height: 30em;
+			background-color: $contentBoxColor;
+			border-radius: 2.5em;
+			margin: auto;
+			box-shadow: 0.5em 0.5em 4em $darkBrown;
+			position: relative;
+
+			.time-select{
+				height: 220px;
+				width: 150px;
+				position: absolute;
+				margin: auto;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+
+				h4 {
+					text-align: center;
+				}
+
+				.form-wrapper{
+					margin-bottom: 30px;
+				}
+
+			}
+		}
+	}
+
+	#play-time-form{
+		div {
+			display: inline-block;
+
+			input {
+				display: block;
+				position: relative;
+				top: -1em;
+			}
+
+			label {
+				display: block;
+				position: relative;
+				top: 3em;
+				text-align: center;
+			}
+		}
+	}
+}
