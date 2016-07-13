@@ -50,11 +50,12 @@
 	<script id="game-screen-template" type="text/template">
 		<!-- top -->
 				 <div class="game-top">
+				 	<div class="game-top-wrapper">
 				 	<div class="timing-btn">
 				 		<div class="timing-label">
 				 			<h4 id="timer"></h4>
 				 		</div>
-				 		<button class="reset-button" id="game-reset">Reset</button>
+				 		<button class="btn reset-button" id="game-reset">Reset</button>
 				 	</div>
 				 	<div class="winning-score">
 				 		<div class="win-label">
@@ -81,6 +82,7 @@
 				 		</div>
 				 	</div>
 				 </div>
+				 </div>
 				 <!-- top ends -->
 				 <!-- middle -->
 				 <div class="game-middle">
@@ -94,9 +96,11 @@
 				 <!-- middle ends -->
 				 <!-- bottom -->
 				 <div class="game-bottom">
-				 	<button class="btn rock-btn" id="btn-rock">Rock</button>
-				 	<button class="btn paper-btn" id="btn-paper">Paper</button>
-				 	<button class="btn scissors-btn" id="btn-scissors">Scissors</button>
+				 	<div class="game-bottom-wrapper">
+					 	<button class="btn rock-btn" id="btn-rock">Rock</button>
+					 	<button class="btn paper-btn" id="btn-paper">Paper</button>
+					 	<button class="btn scissors-btn" id="btn-scissors">Scissors</button>
+				 	</div>
 				 </div>
 				 <!-- bottom ends -->
 	</script>

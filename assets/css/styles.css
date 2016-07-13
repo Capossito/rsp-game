@@ -28,7 +28,8 @@ input[type=text] {
   text-decoration: none;
   outline: none;
   text-align: center;
-  border: none; }
+  border: none;
+  cursor: pointer; }
 
 #header-section .header-section-wrapper .title-header {
   width: 100%;
@@ -71,26 +72,40 @@ input[type=text] {
   #body-section .body-section-wrapper .main-content .game-top {
     width: 100%;
     height: 150px; }
-    #body-section .body-section-wrapper .main-content .game-top .timing-btn {
-      width: 100px;
-      height: 60px;
-      position: absolute;
-      left: 100px; }
-    #body-section .body-section-wrapper .main-content .game-top .winning-score {
-      width: 100px;
-      height: 60px;
-      position: absolute;
-      right: 200px; }
-    #body-section .body-section-wrapper .main-content .game-top .drawing-score {
-      width: 100px;
-      height: 60px;
-      position: absolute;
-      right: 100px; }
-    #body-section .body-section-wrapper .main-content .game-top .losses-score {
-      width: 100px;
-      height: 60px;
-      position: absolute;
-      right: 0; }
+    #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper {
+      width: 60%;
+      height: 100%;
+      margin: 0 auto;
+      text-align: center; }
+      #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper h4 {
+        color: #B12C2C;
+        font-size: 1.3em; }
+      #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .timing-btn {
+        width: 100px;
+        height: 60px;
+        display: inline-block; }
+        #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .timing-btn .timing-label {
+          height: 40px;
+          border: 2px solid #B12C2C;
+          border-radius: 0.8em; }
+        #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .timing-btn h4 {
+          margin-top: 10px;
+          font-size: 1.3em;
+          color: #B12C2C; }
+        #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .timing-btn .reset-button {
+          background-color: #FFE574; }
+      #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .winning-score {
+        width: 100px;
+        height: 60px;
+        display: inline-block; }
+      #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .drawing-score {
+        width: 100px;
+        height: 60px;
+        display: inline-block; }
+      #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .losses-score {
+        width: 100px;
+        height: 60px;
+        display: inline-block; }
   #body-section .body-section-wrapper .main-content .game-middle {
     width: 100%;
     height: 150px; }
@@ -108,6 +123,26 @@ input[type=text] {
       background-repeat: no-repeat;
       background-size: cover;
       float: right; }
+  #body-section .body-section-wrapper .main-content .game-bottom {
+    width: 100%;
+    height: 150px; }
+    #body-section .body-section-wrapper .main-content .game-bottom .game-bottom-wrapper {
+      width: 50%;
+      height: 70px;
+      margin: 0 auto;
+      text-align: center; }
+      #body-section .body-section-wrapper .main-content .game-bottom .game-bottom-wrapper .rock-btn {
+        background: #FFD105 url("../images/rock-btn-img.png") no-repeat;
+        background-size: 25px 16px;
+        background-position: 4px; }
+      #body-section .body-section-wrapper .main-content .game-bottom .game-bottom-wrapper .paper-btn {
+        background: #FFD105 url("../images/paper-btn-img.png") no-repeat;
+        background-size: 25px 16px;
+        background-position: 4px; }
+      #body-section .body-section-wrapper .main-content .game-bottom .game-bottom-wrapper .scissors-btn {
+        background: #FFD105 url("../images/scissors-btn-img.png") no-repeat;
+        background-size: 25px 16px;
+        background-position: 4px; }
 #body-section #play-time-form div {
   display: inline-block; }
   #body-section #play-time-form div input {

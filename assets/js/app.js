@@ -72,7 +72,20 @@ $(document).ready(function() {
 		}, 
 
 		onTimeFinished: function() {
-			alert("time finished!!!!!");
+			//alert("time finished!!!!!");
+			var userwins = App.wins;
+			var itsDraw = App.draws;
+			var compWins = App.losses;
+			var arrayScores = [App.wins, App.draws, App.losses];
+			var maxv = Math.max.apply(Math, arrayScores);
+			if (maxv === userwins) {
+				alert('user wins');
+			}else if (maxv === itsDraw){
+				alert(':( its a draw!!');
+
+			}else if(maxv === compWins){
+				alert('yey comp wins');
+			}
 		},
 
 		onUserRockSelected: function(){
@@ -101,7 +114,7 @@ $(document).ready(function() {
 						float: 'right'
 					});
 					App.draws = App.draws + 1;
-					$('.draw-score').text(App.draws); 
+					$('.draw-score h4').text(App.draws); 
 					break;
 				case 2:
 					//alert("rock + paper = loss");
@@ -123,7 +136,7 @@ $(document).ready(function() {
 						float: 'right'
 					});
 					App.losses = App.losses + 1;
-					$('.loss-score').text(App.losses); 
+					$('.loss-score h4').text(App.losses); 
 					break;
 				case 3:
 					//alert("rock + scissors = win");
@@ -145,7 +158,7 @@ $(document).ready(function() {
 						float: 'right'
 					});
 					App.wins = App.wins + 1;
-					$('.win-score').text(App.wins); 
+					$('.win-score h4').text(App.wins); 
 			}
 		},
 
@@ -173,7 +186,7 @@ $(document).ready(function() {
 						float: 'right'
 					});
 					App.wins = App.wins + 1;
-					$('.win-score').text(App.wins); 
+					$('.win-score h4').text(App.wins); 
 					break;
 				case 2:
 					//alert("paper + paper = draw");
@@ -194,7 +207,7 @@ $(document).ready(function() {
 						float: 'right'
 					});
 					App.draws = App.draws + 1;
-					$('.draw-score').text(App.draws); 
+					$('.draw-score h4').text(App.draws); 
 					break;
 				case 3:
 					//alert("paper + scissors = loss");
@@ -215,7 +228,7 @@ $(document).ready(function() {
 						float: 'right'
 					});
 					App.losses = App.losses + 1;
-					$('.loss-score').text(App.losses); 
+					$('.loss-score h4').text(App.losses); 
 			}
 		},
 
@@ -243,7 +256,7 @@ $(document).ready(function() {
 						float: 'right'
 					});
 					App.losses = App.losses + 1;
-					$('.loss-score').text(App.losses); 
+					$('.loss-score h4').text(App.losses); 
 					break;
 				case 2:
 					//alert("scissors + paper = win");
@@ -264,7 +277,7 @@ $(document).ready(function() {
 						float: 'right'
 					});
 					App.wins = App.wins + 1;
-					$('.win-score').text(App.wins); 
+					$('.win-score h4').text(App.wins); 
 					break;
 				case 3:
 					//alert("scissors + scissors = draw");
@@ -285,43 +298,40 @@ $(document).ready(function() {
 						float: 'right'
 					});
 					App.draws = App.draws + 1;
-					$('.draw-score').text(App.draws); 
+					$('.draw-score h4').text(App.draws); 
 			}
 
 		},
 
 		setTimer: function(minutes, seconds){
-
 			function countdown(minutes, seconds) {
-    var sec = seconds;
-    var min = minutes;
-    function clock() {
- 
-        var currentMin = min
-        sec--;
-        $('#timer').text( currentMin.toString() + ":" + (sec < 10 ? "0" : "") + String(sec) );
-        if( sec > 0 ) {
-            setTimeout(clock, 1000);
-        } else {
-            currentMin = min-1;
-            if(min > 1){
-                
-                countdown(min-1, 60);           
-                    
-            }else{
-            	if(sec < 1 && min < 1){
-              		App.onTimeFinished();
-              }else{
-              	countdown(0, 60); 
-              }
-            	
-            }
-        }
-    }
-    clock();
-}
-			
-
+			    var sec = seconds;
+			    var min = minutes;
+			    function clock() {
+			 
+			        var currentMin = min
+			        sec--;
+			        $('#timer').text( currentMin.toString() + ":" + (sec < 10 ? "0" : "") + String(sec) );
+			        if( sec > 0 ) {
+			            setTimeout(clock, 1000);
+			        } else {
+			            currentMin = min-1;
+			            if(min > 1){
+			                
+			                countdown(min-1, 60);           
+			                    
+			            }else{
+			            	if(sec < 1 && min < 1){
+			              		App.onTimeFinished();
+			              }else{
+			              	countdown(0, 60); 
+			              }
+			            	
+			            }
+			        }
+			    }
+			    clock();
+			}
 			countdown(minutes, seconds);
 
 		},
