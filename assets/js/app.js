@@ -23,6 +23,7 @@ $(document).ready(function() {
 			App.$contentArea = $('.main-content');
 			App.$templateTimingScreen = $('#select-time-template').html();
 			App.$templateGameScreen = $('#game-screen-template').html();
+			App.$templateWinnersScreen = $('#winner-annouce-template').html();
 
 		},
 
@@ -77,15 +78,28 @@ $(document).ready(function() {
 			var itsDraw = App.draws;
 			var compWins = App.losses;
 			var arrayScores = [App.wins, App.draws, App.losses];
+			console.log(userwins + " "+ itsDraw +" "+ compWins);
+			console.log(arrayScores);
 			var maxv = Math.max.apply(Math, arrayScores);
-			if (maxv === userwins) {
-				alert('user wins');
-			}else if (maxv === itsDraw){
-				alert(':( its a draw!!');
+			console.log(maxv);
 
-			}else if(maxv === compWins){
-				alert('yey comp wins');
+			switch(maxv){
+				case App.wins:
+					App.winnerMessage('User Wins!!');
+					break;
+				case App.draws:
+					App.winnerMessage('Its a Draw!!');
+					break;
+				case App.losses:
+					App.winnerMessage('Computer Wins!!');
 			}
+
+		},
+
+		winnerMessage: function(option){
+			
+			App.$contentArea.html(App.$templateWinnersScreen);
+			$('#winners-text').text(option);
 		},
 
 		onUserRockSelected: function(){
@@ -311,6 +325,9 @@ $(document).ready(function() {
 			 
 			        var currentMin = min
 			        sec--;
+			        if (sec === 10) {
+			        	alert('hurry up! Time\'s Almost Up');
+			        }
 			        $('#timer').text( currentMin.toString() + ":" + (sec < 10 ? "0" : "") + String(sec) );
 			        if( sec > 0 ) {
 			            setTimeout(clock, 1000);
@@ -346,18 +363,10 @@ $(document).ready(function() {
 			App.wins = 0;
 			App.draws = 0;
 			App.losses = 0;
-			//$('.win-score').text('0');
-			//$('.draw-score').text('0');
-			//$('.loss-score').text('0');
 			App.onStartGamePressed();
-			//countdown(App.timeMin, App.timeSec);
 
 		}
 
-		//settings functions
-		
-
-			//countdown(1);
 
 	};
 	

@@ -56,6 +56,19 @@ input[type=text] {
   margin: auto;
   box-shadow: 0.5em 0.5em 4em #836B00;
   position: relative; }
+  #body-section .body-section-wrapper .main-content .winner-message {
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0; }
+    #body-section .body-section-wrapper .main-content .winner-message h1 {
+      font-size: 2.5em;
+      color: #B12C2C; }
   #body-section .body-section-wrapper .main-content .time-select {
     height: 220px;
     width: 150px;
