@@ -1,8 +1,13 @@
+//
+
 $(document).ready(function() {
+
 	console.log("yay ready!!!");
 
+	//
 	var App = {
 
+		// -- variables top keep track -- //
 		timeRemaining: '',
 		timeSec: 0,
 		timeMin: 0,
@@ -11,12 +16,18 @@ $(document).ready(function() {
 		losses: 0,
 		gameReseted: false,
 
+
+		// Init function runs
+		// Starts by caching our templates
+		// Set first screen for time input
+		// Bind events (buttons mainly)
 		init: function(){
 			App.cacheElements();
 			App.setTimingScreen();
 			App.bindEvents();
 		},
 
+		//DOM and out Templates
 		cacheElements: function(){
 			App.$doc = $(document);
 
@@ -27,30 +38,37 @@ $(document).ready(function() {
 
 		},
 
+		// Set time input screen
 		setTimingScreen: function(){
 			App.$contentArea.html(App.$templateTimingScreen);
+
+			//lets prevent the user from entering charachters
+			//and also lets prevent user from entering a number > than 60
+			//no more than one hour playing time.
 			$(".times-input").keydown(function (event) {
-    
-        //prevent using shift with numbers
-        if (event.shiftKey == true) {
-            event.preventDefault();
-        }
-    
-        if (!((event.keyCode == 190) || (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 46)) {
-            event.preventDefault();
-    
-        }
-    });
-    
-    $(".times-input").keyup(function (event) {
-    
-        var number = parseFloat($(this).val());
-        if(number > 60){
-           $(this).val("");
-        }
-    });
+		        if (event.shiftKey == true) {
+		            event.preventDefault();
+		        }
+		    	
+		    	//avoiding special charachters as well
+		        if (!((event.keyCode == 190) || (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 46)) {
+		            event.preventDefault();
+		    
+		        }
+		    });
+    		
+    		//no more than 60 min or 60 sec
+		    $(".times-input").keyup(function (event) {
+		    
+		        var number = parseFloat($(this).val());
+		        if(number > 60){
+		           $(this).val("");
+		        }
+		    });
 		},
 
+
+		//this function binds the button pressing events
 		bindEvents: function(){
 			App.$doc.on('click', '#btn-start-game', App.onStartGamePressed);
 			App.$doc.on('click', '#btn-rock', App.onUserRockSelected);
@@ -62,12 +80,13 @@ $(document).ready(function() {
 		},
 
 
-		//game functions
+		// -- Main Game Functions and Logic -- //
 
+		//when start button pressed
+		//making sure this is not a reseted game
 		onStartGamePressed: function(){
 			if (App.gameReseted) {
 
-				//App.setTimer(0, 0);
 				App.setTimer(App.timeMin, App.timeSec);
 
 				App.$contentArea.html(App.$templateGameScreen);
@@ -76,22 +95,23 @@ $(document).ready(function() {
 			}else{
 
 				var values = $('#play-time-form').serializeArray();
-				console.log(values);
-				console.log(values[0]['value']);
-				console.log(values[1]['value']);
+				//console.log(values);
+				//console.log(values[0]['value']);
+				//console.log(values[1]['value']);
 
 				App.timeMin = values[0]['value'];
 				App.timeSec = values[1]['value'];
-				//App.startCountDown;
 				App.setTimer(values[0]['value'], values[1]['value'])
 				//countdown(values[0]['value'], values[1]['value']);
 
+				//after setting time lets bring up the game board.
 				App.$contentArea.html(App.$templateGameScreen);
 
 			}
 			
 		}, 
 
+		//this function is tiggered when time gets to 0
 		onTimeFinished: function() {
 			//alert("time finished!!!!!");
 			var userwins = App.wins;
@@ -116,12 +136,17 @@ $(document).ready(function() {
 
 		},
 
+		//this function run after time gets to 0
+		//winner is evaluated and shown
 		winnerMessage: function(option){
 			
 			App.$contentArea.html(App.$templateWinnersScreen);
 			$('#winners-text').text(option);
 		},
 
+		// -- Rock Paper Scissors Logic -- //
+
+		//Possible outcomes for Rock
 		onUserRockSelected: function(){
 			var compC = App.onComputerChoise();
 			console.log(compC);
@@ -196,6 +221,7 @@ $(document).ready(function() {
 			}
 		},
 
+		//Possible outcomes for Paper
 		onUserPaperSelected: function(){
 			var compC = App.onComputerChoise();
 			console.log(compC);
@@ -266,6 +292,7 @@ $(document).ready(function() {
 			}
 		},
 
+		//Possible outcomes for Scissors
 		onUserScissorsSelected: function(){
 			var compC = App.onComputerChoise();
 			console.log(compC);
@@ -337,6 +364,9 @@ $(document).ready(function() {
 
 		},
 
+
+		//Timer function
+		//params @minutes and @seconds both entered by the user
 		setTimer: function(minutes, seconds){
 			function countdown(minutes, seconds) {
 			    var sec = seconds;
@@ -374,11 +404,15 @@ $(document).ready(function() {
 
 		},
 
+
+		//This function return a randomly computer
+		//generated choice of Rock Paper Scissors
 		onComputerChoise: function(){
 			computerChoice = Math.floor((Math.random() * 3) + 1);
 			return computerChoice;
 		},
 
+		//This function is triggered when the game is reset.
 		onGameResetPressed: function(){
 			App.gameReseted = true;
 			App.wins = 0;
@@ -388,8 +422,8 @@ $(document).ready(function() {
 
 		}
 
-
 	};
 
+	//Application Initialization
 	App.init();
 });

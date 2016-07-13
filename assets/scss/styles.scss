@@ -1,11 +1,12 @@
-//variable
+// ------- Global Variables ----------- //
 
 $mainColor: #FFD105;
 $contentBoxColor: #FFE574;
 $darkRed: #B12C2C;
 $darkBrown: #836B00;
 
-//my font
+
+// ------- Fonts ----------- //
 
 @font-face{
 	font-family: "DeLaFuente";
@@ -13,7 +14,7 @@ $darkBrown: #836B00;
 }
 
 
-//global styling
+// ------- Global Styles ----------- //
 
 *{
 	box-sizing: border-box;
@@ -50,7 +51,7 @@ input[type=text] {
 	cursor: pointer;
 }
 
-//header section styles
+// ------- Header Section Styles  ----------- //
 
 #header-section{
 	.header-section-wrapper{
@@ -88,7 +89,7 @@ input[type=text] {
 }
 
 
-//body section styles
+// ------- Body Section Styles ----------- //
 
 #body-section{
 
@@ -301,7 +302,7 @@ input[type=text] {
 	}
 }
 
-//mobile
+// ------- Mobile Queries ----------- //
 @media only screen and (max-width: 667px) { 
 	
 					.timing-btn{
