@@ -86,7 +86,7 @@ input[type=text] {
     width: 100%;
     height: 150px; }
     #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper {
-      width: 60%;
+      min-width: 60%;
       height: 100%;
       margin: 0 auto;
       text-align: center; }
@@ -119,6 +119,12 @@ input[type=text] {
         width: 100px;
         height: 60px;
         display: inline-block; }
+      @media only screen and (max-width: 667px) {
+        #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .winning-score, #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .drawing-score, #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .losses-score {
+          width: 50px;
+          height: 50px; }
+        #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper #body-section, #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .body-section-wrapper, #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .main-content, #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .game-top, #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper .game-top-wrapper, #body-section .body-section-wrapper .main-content .game-top .game-top-wrapper h4 {
+          font-size: 1em; } }
   #body-section .body-section-wrapper .main-content .game-middle {
     width: 100%;
     height: 150px; }
@@ -136,6 +142,12 @@ input[type=text] {
       background-repeat: no-repeat;
       background-size: cover;
       float: right; }
+    @media only screen and (max-width: 667px) {
+      #body-section .body-section-wrapper .main-content .game-middle .player-choice, #body-section .body-section-wrapper .main-content .game-middle .computer-choice {
+        width: 100px;
+        height: 65px;
+        float: none;
+        margin: 0 auto; } }
   #body-section .body-section-wrapper .main-content .game-bottom {
     width: 100%;
     height: 150px; }
@@ -171,3 +183,12 @@ input[type=text] {
     top: 3em;
     text-align: center;
     color: #B12C2C; }
+
+@media only screen and (max-width: 667px) {
+  .timing-btn {
+    margin-right: 25px;
+    margin-left: 25px;
+    margin-top: 15px; }
+
+  #body-section, .body-section-wrapper, .main-content, .game-bottom, .game-bottom-wrapper, .paper-btn, .rock-btn {
+    margin-bottom: 10px; } }

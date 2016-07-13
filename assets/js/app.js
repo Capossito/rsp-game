@@ -29,6 +29,26 @@ $(document).ready(function() {
 
 		setTimingScreen: function(){
 			App.$contentArea.html(App.$templateTimingScreen);
+			$(".times-input").keydown(function (event) {
+    
+        //prevent using shift with numbers
+        if (event.shiftKey == true) {
+            event.preventDefault();
+        }
+    
+        if (!((event.keyCode == 190) || (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 46)) {
+            event.preventDefault();
+    
+        }
+    });
+    
+    $(".times-input").keyup(function (event) {
+    
+        var number = parseFloat($(this).val());
+        if(number > 60){
+           $(this).val("");
+        }
+    });
 		},
 
 		bindEvents: function(){
@@ -56,17 +76,17 @@ $(document).ready(function() {
 			}else{
 
 				var values = $('#play-time-form').serializeArray();
-			console.log(values);
-			console.log(values[0]['value']);
-			console.log(values[1]['value']);
+				console.log(values);
+				console.log(values[0]['value']);
+				console.log(values[1]['value']);
 
-			App.timeMin = values[0]['value'];
-			App.timeSec = values[1]['value'];
-			//App.startCountDown;
-			App.setTimer(values[0]['value'], values[1]['value'])
-			//countdown(values[0]['value'], values[1]['value']);
+				App.timeMin = values[0]['value'];
+				App.timeSec = values[1]['value'];
+				//App.startCountDown;
+				App.setTimer(values[0]['value'], values[1]['value'])
+				//countdown(values[0]['value'], values[1]['value']);
 
-			App.$contentArea.html(App.$templateGameScreen);
+				App.$contentArea.html(App.$templateGameScreen);
 
 			}
 			
@@ -325,8 +345,9 @@ $(document).ready(function() {
 			 
 			        var currentMin = min
 			        sec--;
-			        if (sec === 10) {
+			        if (sec === 10 && min === 0) {
 			        	alert('hurry up! Time\'s Almost Up');
+
 			        }
 			        $('#timer').text( currentMin.toString() + ":" + (sec < 10 ? "0" : "") + String(sec) );
 			        if( sec > 0 ) {
@@ -369,7 +390,6 @@ $(document).ready(function() {
 
 
 	};
-	
 
 	App.init();
 });

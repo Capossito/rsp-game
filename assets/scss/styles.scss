@@ -147,7 +147,7 @@ input[type=text] {
 				height: 150px;
 
 				.game-top-wrapper{
-					width: 60%;
+					min-width: 60%;
 					height: 100%;
 					margin: 0 auto;
 					text-align: center;
@@ -194,6 +194,18 @@ input[type=text] {
 						height: 60px;
 						display: inline-block;
 					}
+
+					@media only screen and (max-width: 667px) { 
+							.winning-score, .drawing-score, .losses-score {
+								width: 50px;
+								height: 50px;
+							}
+							
+							#body-section, .body-section-wrapper, .main-content, .game-top, .game-top-wrapper, h4{
+								font-size: 1em;
+							}
+							
+						}
 				}
 
 				
@@ -221,6 +233,16 @@ input[type=text] {
 					float: right;
 
 				}
+
+				@media only screen and (max-width: 667px) { 
+					.player-choice, .computer-choice {
+						width: 100px;
+						height: 65px;
+						float: none;
+						margin: 0 auto;
+					}
+				}
+
 			}
 
 			.game-bottom{
@@ -277,4 +299,20 @@ input[type=text] {
 			}
 		}
 	}
+}
+
+//mobile
+@media only screen and (max-width: 667px) { 
+	
+					.timing-btn{
+						margin-right: 25px;
+						margin-left: 25px;
+						margin-top: 15px;
+					}
+
+					#body-section, .body-section-wrapper, .main-content, .game-bottom, .game-bottom-wrapper, .paper-btn, .rock-btn {
+						margin-bottom: 10px;
+					}
+
+
 }
