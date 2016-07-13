@@ -163,16 +163,19 @@ input[type=text] {
 				.player-choice{
 					width: 158px;
 					height: 100px;
-					background: url("../images/hands/hands1.png") no-repeat;
+					background: url("../images/hands/hands1.png");
+					background-repeat: no-repeat;
 					background-size: cover;
 					float: left;
+					margin-left: -158px;
 	
 				}
 
 				.computer-choice{
 					width: 150px;
 					height: 100px;
-					background: url("../images/hands/hands6.png") no-repeat;
+					background: url("../images/hands/hands6.png");
+					background-repeat: no-repeat;
 					background-size: cover;
 					float: right;
 

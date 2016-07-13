@@ -3,6 +3,11 @@ $(document).ready(function() {
 
 	var App = {
 
+		timeRemaining: '',
+		wins: 0,
+		draws: 0,
+		losses: 0,
+
 		init: function(){
 			App.cacheElements();
 			App.setTimingScreen();
@@ -37,9 +42,11 @@ $(document).ready(function() {
 		onStartGamePressed: function(){
 			var values = $('#play-time-form').serializeArray();
 			console.log(values);
+			console.log(values[0]['value']);
+			console.log(values[1]['value']);
 
 			//App.startCountDown;
-			countdown(1);
+			countdown(values[0]['value'], values[1]['value']);
 
 			App.$contentArea.html(App.$templateGameScreen);
 		}, 
@@ -53,13 +60,71 @@ $(document).ready(function() {
 			console.log(compC);
 			switch(compC){
 				case 1:
-					alert("rock + rock = draw");
+					//alert("rock + rock = draw");
+					$('.player-choice').css({
+						width: '158px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands1.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'left'
+					});
+					$('.player-choice').animate({'margin-left': 0});
+
+					$('.computer-choice').css({
+						width: '158px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands6.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'right'
+					});
+					App.draws = App.draws + 1;
+					$('.draw-score').text(App.draws); 
 					break;
 				case 2:
-					alert("rock + paper = loss");
+					//alert("rock + paper = loss");
+					$('.player-choice').css({
+						width: '158px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands1.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'left'
+					});
+					$('.player-choice').animate({'margin-left': 0});
+					$('.computer-choice').css({
+						width: '226px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands4.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'right'
+					});
+					App.losses = App.losses + 1;
+					$('.loss-score').text(App.losses); 
 					break;
 				case 3:
-					alert("rock + scissors = win");
+					//alert("rock + scissors = win");
+					$('.player-choice').css({
+						width: '158px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands1.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'left'
+					});
+					$('.player-choice').animate({'margin-left': 0});
+					$('.computer-choice').css({
+						width: '226px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands2.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'right'
+					});
+					App.wins = App.wins + 1;
+					$('.win-score').text(App.wins); 
 			}
 		},
 
@@ -68,15 +133,69 @@ $(document).ready(function() {
 			console.log(compC);
 			switch(compC){
 				case 1:
-					alert("paper + rock = win");
+					//alert("paper + rock = win");
+					$('.player-choice').css({
+						width: '226px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands5.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'left'
+					});
+
+					$('.computer-choice').css({
+						width: '158px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands6.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'right'
+					});
+					App.wins = App.wins + 1;
+					$('.win-score').text(App.wins); 
 					break;
 				case 2:
-					alert("paper + paper = draw");
+					//alert("paper + paper = draw");
+					$('.player-choice').css({
+						width: '226px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands5.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'left'
+					});
+					$('.computer-choice').css({
+						width: '226px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands4.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'right'
+					});
+					App.draws = App.draws + 1;
+					$('.draw-score').text(App.draws); 
 					break;
 				case 3:
-					alert("paper + scissors = loss");
+					//alert("paper + scissors = loss");
+					$('.player-choice').css({
+						width: '226px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands5.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'left'
+					});
+					$('.computer-choice').css({
+						width: '226px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands2.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'right'
+					});
+					App.losses = App.losses + 1;
+					$('.loss-score').text(App.losses); 
 			}
-
 		},
 
 		onUserScissorsSelected: function(){
@@ -84,13 +203,68 @@ $(document).ready(function() {
 			console.log(compC);
 			switch(compC){
 				case 1:
-					alert("scissors + rock = loss");
+					//alert("scissors + rock = loss");
+					$('.player-choice').css({
+						width: '226px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands3.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'left'
+					});
+
+					$('.computer-choice').css({
+						width: '158px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands6.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'right'
+					});
+					App.losses = App.losses + 1;
+					$('.loss-score').text(App.losses); 
 					break;
 				case 2:
-					alert("scissors + paper = win");
+					//alert("scissors + paper = win");
+					$('.player-choice').css({
+						width: '226px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands3.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'left'
+					});
+					$('.computer-choice').css({
+						width: '226px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands4.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'right'
+					});
+					App.wins = App.wins + 1;
+					$('.win-score').text(App.wins); 
 					break;
 				case 3:
-					alert("scissors + scissors = draw");
+					//alert("scissors + scissors = draw");
+					$('.player-choice').css({
+						width: '226px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands3.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'left'
+					});
+					$('.computer-choice').css({
+						width: '226px',
+						height: '100px',
+						background: 'url("./assets/images/hands/hands2.png")',
+						'background-repeat': 'no-repeat',
+						'background-size': 'cover',
+						float: 'right'
+					});
+					App.draws = App.draws + 1;
+					$('.draw-score').text(App.draws); 
 			}
 
 		},
@@ -98,8 +272,6 @@ $(document).ready(function() {
 		onComputerChoise: function(){
 			computerChoice = Math.floor((Math.random() * 3) + 1);
 			return computerChoice;
-
-
 		}
 
 		//settings functions
@@ -109,8 +281,8 @@ $(document).ready(function() {
 
 	};
 
-	function countdown(minutes){
-				var sec = 60;
+	function countdown(minutes, seconds){
+				var sec = seconds;
 				var min = minutes;
 				function clock(){
 					//var counter = $("#timer");
@@ -121,7 +293,7 @@ $(document).ready(function() {
 						setTimeout(clock, 1000);
 					}else{
 						if(min > 1){
-							countdown(min - 1);
+							countdown(min - 1, 60);
 						}else{
 							//alert("countdown finished!!!");
 							App.onTimeFinished();
