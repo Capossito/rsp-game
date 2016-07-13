@@ -4,9 +4,12 @@ $(document).ready(function() {
 	var App = {
 
 		timeRemaining: '',
+		timeSec: 0,
+		timeMin: 0,
 		wins: 0,
 		draws: 0,
 		losses: 0,
+		gameReseted: false,
 
 		init: function(){
 			App.cacheElements();
@@ -32,6 +35,7 @@ $(document).ready(function() {
 			App.$doc.on('click', '#btn-rock', App.onUserRockSelected);
 			App.$doc.on('click', '#btn-paper', App.onUserPaperSelected);
 			App.$doc.on('click', '#btn-scissors', App.onUserScissorsSelected);
+			App.$doc.on('click', '#game-reset', App.onGameResetPressed);
 
 
 		},
@@ -40,19 +44,35 @@ $(document).ready(function() {
 		//game functions
 
 		onStartGamePressed: function(){
-			var values = $('#play-time-form').serializeArray();
+			if (App.gameReseted) {
+
+				//App.setTimer(0, 0);
+				App.setTimer(App.timeMin, App.timeSec);
+
+				App.$contentArea.html(App.$templateGameScreen);
+
+
+			}else{
+
+				var values = $('#play-time-form').serializeArray();
 			console.log(values);
 			console.log(values[0]['value']);
 			console.log(values[1]['value']);
 
+			App.timeMin = values[0]['value'];
+			App.timeSec = values[1]['value'];
 			//App.startCountDown;
-			countdown(values[0]['value'], values[1]['value']);
+			App.setTimer(values[0]['value'], values[1]['value'])
+			//countdown(values[0]['value'], values[1]['value']);
 
 			App.$contentArea.html(App.$templateGameScreen);
+
+			}
+			
 		}, 
 
 		onTimeFinished: function() {
-			//alert("time finished!!!!!");
+			alert("time finished!!!!!");
 		},
 
 		onUserRockSelected: function(){
@@ -69,7 +89,8 @@ $(document).ready(function() {
 						'background-size': 'cover',
 						float: 'left'
 					});
-					$('.player-choice').animate({'margin-left': 0});
+					//animation off for now.
+					//$('.player-choice').animate({'margin-left': 0});
 
 					$('.computer-choice').css({
 						width: '158px',
@@ -269,9 +290,58 @@ $(document).ready(function() {
 
 		},
 
+		setTimer: function(minutes, seconds){
+
+			function countdown(minutes, seconds) {
+    var sec = seconds;
+    var min = minutes;
+    function clock() {
+ 
+        var currentMin = min
+        sec--;
+        $('#timer').text( currentMin.toString() + ":" + (sec < 10 ? "0" : "") + String(sec) );
+        if( sec > 0 ) {
+            setTimeout(clock, 1000);
+        } else {
+            currentMin = min-1;
+            if(min > 1){
+                
+                countdown(min-1, 60);           
+                    
+            }else{
+            	if(sec < 1 && min < 1){
+              		App.onTimeFinished();
+              }else{
+              	countdown(0, 60); 
+              }
+            	
+            }
+        }
+    }
+    clock();
+}
+			
+
+			countdown(minutes, seconds);
+
+		},
+
 		onComputerChoise: function(){
 			computerChoice = Math.floor((Math.random() * 3) + 1);
 			return computerChoice;
+		},
+
+		onGameResetPressed: function(){
+			App.gameReseted = true;
+			App.wins = 0;
+			App.draws = 0;
+			App.losses = 0;
+			//$('.win-score').text('0');
+			//$('.draw-score').text('0');
+			//$('.loss-score').text('0');
+			App.onStartGamePressed();
+			//countdown(App.timeMin, App.timeSec);
+
 		}
 
 		//settings functions
@@ -280,28 +350,7 @@ $(document).ready(function() {
 			//countdown(1);
 
 	};
-
-	function countdown(minutes, seconds){
-				var sec = seconds;
-				var min = minutes;
-				function clock(){
-					//var counter = $("#timer");
-					var current_min = min-1;
-					sec--;
-					$('#timer').text(current_min.toString() + ":" + (sec < 10 ? "0" : "" ) + String(sec) );
-					if (sec > 0) {
-						setTimeout(clock, 1000);
-					}else{
-						if(min > 1){
-							countdown(min - 1, 60);
-						}else{
-							//alert("countdown finished!!!");
-							App.onTimeFinished();
-						}
-					}
-				}
-				clock();
-			}
+	
 
 	App.init();
 });

@@ -100,8 +100,7 @@ input[type=text] {
       background: url("../images/hands/hands1.png");
       background-repeat: no-repeat;
       background-size: cover;
-      float: left;
-      margin-left: -158px; }
+      float: left; }
     #body-section .body-section-wrapper .main-content .game-middle .computer-choice {
       width: 150px;
       height: 100px;
